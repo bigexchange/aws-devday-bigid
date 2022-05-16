@@ -1,0 +1,63 @@
+UserID | varchar(128) primary key,FirstName | varchar(128) not null,LastName | varchar(128) not null,Username | varchar(128) unique not null,Password | varchar(128) not null,Email | varchar(128) unique,Age | integer,Gender | varchar(128),Street | varchar(128),City | varchar(128),PostalCode | varchar(128),State | varchar(128),Country | varchar(128),ProfileCreated | date not null,UserNotes | varchar(128),LegacyID | varchar(128),UserIndex | varchar(128)
+9490-tber,John,Smith,johnsmith,25f9e794323b453885f5181f1b624d0b,john.smith@gmail.com,65,M,165 Mercer St,New York,10012,New York,United States of America,2009-03-23,022-44-9876,20090323-a,1123
+2683-wquj,Larry,Hubbard,larryhubbard,7bdk5a12,larry.hubbard@yahoo.com,28,M,7718 N Hillcrest Lane,Saint Albans,11412-1011,New York,United States of America,2009-03-23,Paid using 5400-1234-5500-1234,20090323-b,1907
+4873-3911,Maryann,Newman,maryannnewman,mhqt5252,maryann.newman@hotmail.com,52,F,9377 Parker Ave,Wethersfield,06109,Connecticut,United States of America,2010-10-13,,20101013-a,1998
+6389-fjta,Madeline,Byrd,mad101010,25f9e794323b453885f5181f1b624d0b,madeline.byrd@mac.com,29,F,43 Carpenter St,Traverse City,49684,Michigan,United States of America,2011-02-01,,20110201-a,2003
+2214-9442,Beth,Clarke,bethclarke,qexkffx3,beth.clarke@gmail.com,57,F,12 Beacon Rd,Plano,50111-7613,Texas,United States of America,2011-02-26,,20110226-a,2007
+2326-aluj,Lawrence,Willis,20101212777,cdhaqldm,lawrence.willis@yahoo.com,68,M,8052 El Dorado St,Clermont,34711,Florida,United States of America,2012-07-31,,20120731-a,2010
+5773-lvxn,Shari,Hayes,sharihayes,40ivh11m,shari.hayes@hotmail.com,43,F,51 SE. Bridge St,Avon,46123,Indiana,United States of America,2013-01-21,,20130121-a,2011
+2573-iecm,Elvira,Sanchez,elvirasanchez,24vvh251,elvira.sanchez@mac.com,70,F,75 Quinta Normal,Santiago,H77X,Chile,Chile,2013-02-18,,20130218-a,2012
+6670-wqej,Norman,Ford,normanford,aa4n38h9,norman.ford@gmail.com,70,M,8633 Holly Dr,Morton Grove,60053,Illinois,United States of America,2013-02-18,,20130218-b,2013
+5363-zwmh,Rick,Simon,ricksimon,xl2h0l8c,rick.simon@yahoo.com,55,M,12 Beacon Rd,Plano,50111-7613,Texas,United States of America,2014-05-14,,20140514-a,2014
+0930-gnrm,Steve,Horton,2014steveh,qx4bmkys,steve.horton@hotmail.com,58,M,56 Oklahoma Dr,Grosse Pointe,48236,Michigan,United States of America,2014-07-05,,20140705-a,2015
+0484-yjpi,Harold,Spencer,haroldspencer,oz0ojlqp,harold.spencer@mac.com,65,M,7161 Rockaway Street,Albany,12203,New York,United States of America,2014-07-10,,20140710-a,2016
+6720-xpmn,Sherry,Armstrong,sherryarmstrong,25481wf9,sherry.armstrong@gmail.com,31,F,971 Ocean Drive,Grand Blanc,48439,Michigan,United States of America,2014-08-31,,20140831-a,2017
+8500-npty,Chris,Luxemburg,chrisluxemburg,w3e6c476,chris.luxemburg@yahoo.com,58,M,302 East Court,Lacey,98503,Washington,United States of America,2014-11-11,,20141111-a,2018
+1688-jcaz,France,Wilkins,francewilkins,wn0cfwe0,france.wilkins@hotmail.com,45,F,307 Rockaway Ave,West Bloomfield,48322,Michigan,United States of America,2015-02-27,,20150227-a,2019
+3282-dwoy,Courtney,Alexander,courtneyalexander,5taywf6g,courtney.alexander@mac.com,20,F,9495 East Jennings Ave,Reynoldsburg,43068-1154,Ohio,United States of America,2015-06-09,,20150609-a,2020
+6206-zggt,Dominick,Ball,dominickball,ue59j078,dominick.ball@gmail.com,70,M,58 E Smith Store St,Opa Locka,33054,Florida,United States of America,2015-07-15,,20150715-a,2021
+3617-cs43,Elbert,Long,elbertlong,iszlj3hw,elbert.long@yahoo.com,62,M,84 N El Dorado Ave,Latrobe,15650,Pennsylvania,United States of America,2015-08-06,,20150806-a,2022
+3564-qodl,Guadalupe,Campbell,guadalupecampbell,4diolby3,guadalupe.campbell@hotmail.com,64,F,134 Lakeview Drive,Beachwood,44122,Ohio,United States of America,2016-03-10,,20160310-a,2023
+4679-lqfm,Ernestine,Ford,ernestineford,wfy701vn,ernestine.ford@mac.com,35,F,851 53rd Rd,Fairborn,45324,Ohio,United States of America,2016-05-30,,20160530-a,2060
+2119-ynnk,Gayle,Andrews,gayleandrews,sndnzy4l,gayle.andrews@gmail.com,44,F,8893 Oakland Ave,Camden,08105,New Jersey,United States of America,2016-12-13,,20161213-a,2214
+5276-bolp,Virginia,Padilla,virginiapadilla,eu31shqp,virginia.padilla@yahoo.com,54,F,7609 Willow Ave,Davison,48423,Michigan,United States of America,2017-09-08,,20170908-a,3207
+3312-comx,Belinda,Arnold,belindaarnold,4q2pks0w,belinda.arnold@hotmail.com,33,F,95 Laurel St,Westfield,01085,Massachusetts,United States of America,2017-09-28,,20170928-a,3228
+2633-rbbo,Irene,Cook,irenecook,dbh4yay2,irene.cook@mac.com,33,F,965 Roberts Dr,El Paso,79930,Texas,United States of America,2018-02-07,,20180207-a,3860
+5306-zoza,Wendell,Wright,wendellwright,kx8cmysw,wendell.wright@gmail.com,42,F,46 Campfire Ave,Franklin,02038-8776,Massachusetts,United States of America,2018-11-05,,20181105-a,3911
+0311-walj,Kenny,Beck,kennybeck,vqs1cocs,kenny.beck@yahoo.com,33,M,55 Wild Rose Street,Muscatine,52761,Iowa,United States of America,2009-04-19,,20090419-a,4873
+5094-msge,Terry,Nguyen,terrynguyen,fhbnxh9o,terry.nguyen@hotmail.com,66,F,30 Prairie Court,Massillon,44646-6652,Ohio,United States of America,2009-05-29,,20090529-a,5711
+8647-nadf,Jane,Flowers,janeflowers,6pzr7axu,jane.flowers@mac.com,27,F,75 East Sunnyslope Ave,Portland,04103,Maine,United States of America,2011-05-06,,20110506-a,7609
+2373-hqzs,Renee,Mcguire,reneemcguire,14cvioo5,renee.mcguire@gmail.com,19,F,406 Briarwood St,Alabaster,35007,Alabama,United States of America,2011-11-21,,20111121-a,7718
+9260-dgox,Annie,Adams,annieadams,d1c4sx71,annie.adams@yahoo.com,35,F,98 Wayne St,Vincentown,08088,New Jersey,United States of America,2012-01-26,,20120126-a,8052
+3931-xbtf,Derrick,Gomez,derrickgomez,pu0xb228,derrick.gomez@hotmail.com,19,M,166 Locust Street,Lapeer,48446,Michigan,United States of America,2012-06-23,,20120623-a,8081
+2657-rpwg,Clinton,Holloway,clintonholloway,ikqa0ovt,clinton.holloway@mac.com,64,M,17 Brandywine St,San Lorenzo,94580,California,United States of America,2019-04-10,,20190410-a,9807
+2302-cikr,Dana,Bass,bassrocks777,ffk4qzv3,dana.bass@gmail.com,65,F,11 53rd Street,Ossining,10562-7611,New York,United States of America,2013-05-25,,20130525-a,9862
+5095-vixu,John,Castro,johncastro,zovp7wug,john.castro@yahoo.com,62,M,123 Main St,New York,10123-8945,New York,United States of America,2013-11-07,,20131107-a,10012
+5566-oiyo,Anna,Nash,annanash,x9xxtga5,anna.nash@hotmail.com,44,F,57 N. Gulf Drive,Burke,22015,Virginia,United States of America,2014-04-03,,20140403-a,10123
+4719-kqwe,Sinéad,Ryan,sinéadryan,knrp7ikl,sinead.ryan@mac.com,22,F,58 Crescent Street,Round Lake,60073,Illinois,United States of America,2014-04-26,Plans on moving out of the country in 2 months.,20140426-a,11566
+5956-vkcg,Travis,Simmons,travissimmons,kdb9k9rt,travis.simmons@gmail.com,29,M,131 West Schoolhouse Dr,Glasgow,42141,Kentucky,United States of America,2014-04-29,,20140429-a,12203
+9821-bjlk,Jane,Simmons,janesimmons,gwtvfr4u,jane.simmons@yahoo.com,23,F,131 West Schoolhouse Dr,Glasgow,42141,South Dakota,United States of America,2015-05-07,,20150507-a,15650
+1355-hhue,Sharon,Medina,blockring,y5kpzn1o,sharon.medina@hotmail.com,47,F,30 South Littleton Dr,Crown Point,46307,Indiana,United States of America,2015-07-25,,20150725-a,22015
+9497-whjm,Kara,Hogan,karahogan,d0aqlqf1,kara.hogan@mac.com,65,F,7050 East Chapel Dr,Lenoir,28645,North Carolina,United States of America,2015-08-21,,20150821-a,27502
+4969-ccwe,Doreen,Burns,doreenburns,taydzjgl,doreen.burns@gmail.com,26,F,944 James Lane,Grosse Pointe,48236-9043,Michigan,United States of America,2015-10-01,,20151001-a,28645
+4231-jdhj,Kenneth,Bell,kennethbell,0b2sbkff,kenneth.bell@yahoo.com,47,M,11 Gulf St,Garden City,11530,New York,United States of America,2015-10-10,,20151010-a,29550
+6929-mgzk,Ronald,Shaw,ronaldshaw,s8pjjiff,ronald.shaw@hotmail.com,67,M,9043 Clark Court,Brandon,33510,Florida,United States of America,2015-12-28,,20151228-a,32404
+2087-zsvu,Brad,Davis,braddavis,eqsz8262,brad.davis@mac.com,38,M,3 Fairfield Ave,Little Falls,07424,New Jersey,United States of America,2016-10-01,,20161001-a,38671
+2330-xmji,Ellen,Summers,melbourne,o66xsirj,ellen.summers@gmail.com,59,F,5 Bridle Drive,Southington,06489,Connecticut,United States of America,2016-11-02,,20161102-a,42141
+2159-iauf,Guy,Foster,guyfoster,ypssprd6,guy.foster@yahoo.com,60,M,9142 Catherine Dr,Merrick,11566,New York,United States of America,2016-11-09,,20161109-a,43068
+2137-aave,Kathy,Mccoy,kathymccoy,4u1z70ry,kathy.mccoy@hotmail.com,56,F,58 Crescent Street,Round Lake,60073-8894,Illinois,United States of America,2016-12-07,,20161207-a,94580
+3077-typs,Rodney,Saint John,saintjohn,fcvhigj6,rodney.saintjohn.1976@mac.com,43,M,611 Lexington Street,West Des Moines,50265,Iowa,United States of America,2017-02-15,,20170215-a,101201
+8994-keee,Juan,Martinez,juanmartinez,1wlkjg5s,juan.martinez@gmail.com,45,M,140 Arizona St,Sao Paulo,04567-003,Brazil,Brazil,2018-06-03,,20180603-a,113144
+5162-ycnr,Leroy,Francis,leroyfrancis,ra97c366,leroy.francis@yahoo.com,33,M,9862 E Birchwood Dr,Chelsea,02150,Massachusetts,United States of America,2018-12-13,,20181213-a,121891
+4788-ygin,Simon,Daniel,simondaniel,ovm0jdf0,simon.daniel@hotmail.com,20,M,58 Crescent Street,Round Lake,60073,Illinois,United States of America,2009-03-26,,20090326-a,135742
+6632-ynnt,Teresa,Nichols,teresanichols,oub8g9n2,teresa.nichols@mac.com,21,F,90 Center St,Los Angeles,90110,California,United States of America,2009-09-23,,20090923-a,138556
+9903-yvwd,Leigh,Russell,leighrussell,p3o4tq15,leigh.russell@gmail.com,41,F,8081 Ryan Lane,Southaven,38671,Mississippi,United States of America,2010-02-13,,20100213-a,259433
+2251-45ab,Pamela,Norton,pamelanorton,mxui8e5v,pamela.norton@yahoo.com,37,F,915 Cooper Court,Apex,27502,Canada,Canada,2010-09-05,,20100905-a,400009
+4816-kbwz,Debbie,Lamb,debbielamb,6t50g7q5,debbie.lamb@hotmail.com,49,F,123 Main St,New York,10123-8945,New York,United States of America,2010-11-11,,20101111-a,551345
+4205-glgj,Aubrey,Mullins,4051020,2e576k1x,aubrey.mullins@mac.com,22,F,90 Center St,Los Angeles,90110,California,United States of America,2011-01-26,,20110126-a,745010
+6236-tyne,Al,Pope,alpope,hfewapym,al.pope@gmail.com,21,M,55 Inverness Street,Panama City,32404-0311,Florida,United States of America,2011-06-08,,20110608-a,976111
+0809-azxc,Wendy,Casey,wendycasey,3jjxj03g,wendy.casey@yahoo.com,43,F,Alsina 35 Piso 2,Buenos Aires,10583,Argentina,Argentina,2011-11-07,,20111107-a,1442131
+0114-dzcv,Nathan,Duncan,nathanduncan,idaion2s,nathan.duncan@hotmail.com,68,M,58 Crescent Street,Round Lake,60073,Illinois,United States of America,2012-03-02,,20120302-a,1897014
+0123-8945,Sherri,Anderson,sherrianderson,5pmljjbe,sherri.anderson@mac.com,17,F,123 Main St,New York,10123-8945,New York,United States of America,2012-03-19,,20120319-a,3313904
+0007-abcd,Alex,Bulis,alexbulis,4912zzkk,alex.bulis@gmail.com,49,M,50 Post Rd,Boston,02108-6300,Massachusetts,United States of America,2012-06-13,Use 011-22-3333 for SSN.,20120613-a,5331311
+0007-abce,Scooby,Doo,5311240,5aabcdog,scooby.doo@mac.com,12,M,50 Post Rd,Boston,02108-6300,Massachusetts,United States of America,2012-06-13,Reported a certain medical condition that may impact his usage of the service.,20120613-b,6787443
