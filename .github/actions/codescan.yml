@@ -1,0 +1,12 @@
+name: smallid 
+on: [push]
+jobs:
+  codescan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: codescan 
+        uses: bigexchange/codescan-bigid-action@v0
+        with:
+          domain: <YOUR SMALLID/BIGID DOMAIN NAME> 
+          bigid_token: ${{ secrets.BIGID_TOKEN }}
+          github_personnal_access_token: ${{ secrets.PA_TOKEN }}
