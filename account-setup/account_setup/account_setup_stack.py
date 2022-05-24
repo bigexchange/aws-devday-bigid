@@ -41,8 +41,8 @@ class AccountSetupStack(Stack):
                                   ),
                                   publicly_accessible=True,
                                   security_groups=[db_sg])
-        
-        #find existing source bucket (to share)                          
+
+        #find existing source bucket (to share)
         bucket_source = s3.Bucket.from_bucket_name(self,
                                                    "source_bucket",
                                                    "bigid-devday-public-training-dataset")

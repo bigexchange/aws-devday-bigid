@@ -1,10 +1,8 @@
 ---
-title: "Introduction to SmallID"
-chapter: false 
+title: "What is SmallID"
+chapter: false
 weight: 1
 ---
-
-# what is SmallID ?
 
 SmallID- a platform used to find, catalog, and classify sensitive and at-risk data and docs.
 Before we begin, let’s review some important terms:
@@ -15,6 +13,7 @@ Before we begin, let’s review some important terms:
 - **Personal Information (PI)** – data the describes attributes or behaviors of a person
 - **Personally Identifiable Information (PII)** – data that can reveal a person’s identity
 
+
 # where is your data ?
 
-<insert iceberg data>
+![](/images/iceberg.png)

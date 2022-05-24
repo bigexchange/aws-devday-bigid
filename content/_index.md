@@ -4,11 +4,11 @@ chapter: true
 weight: 1
 ---
 
-# Data discovery in AWS with SmallID 
+# Data discovery in AWS with SmallID
 
 ### Welcome
 
-In this workshop you will learn smallID 
+In this workshop you will learn smallID
 
 
 {{% notice warning %}}
