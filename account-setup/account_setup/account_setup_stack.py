@@ -1,3 +1,4 @@
+import json
 from aws_cdk import (
     # Duration,
     Stack,
@@ -41,8 +42,8 @@ class AccountSetupStack(Stack):
                                   ),
                                   publicly_accessible=True,
                                   security_groups=[db_sg])
-        
-        #find existing source bucket (to share)                          
+
+        #find existing source bucket (to share)
         bucket_source = s3.Bucket.from_bucket_name(self,
                                                    "source_bucket",
                                                    "bigid-devday-public-training-dataset")
@@ -122,3 +123,8 @@ class AccountSetupStack(Stack):
                                  resources=cr.AwsCustomResourcePolicy.ANY_RESOURCE),
                              on_create=trigger_build,
                              on_update=trigger_build)
+        with open("assets/autodiscovery_policy.json") as policy_file:
+            policy_document = iam.PolicyDocument.from_json(json.load(policy_file))
+            policy = iam.ManagedPolicy(self, "SmallIDAutodiscoveryPolicy", document=policy_document)
+            iam.User(self, "SmallIDAutomation", managed_policies=[policy], user_name="SmallIDAutomation" )
+

@@ -1,7 +1,7 @@
 ---
 title: "Enable classifiers"
-chapter: false 
-weight: 1
+chapter: false
+weight: 25
 ---
 
 

@@ -7,6 +7,6 @@ jobs:
       - name: codescan 
         uses: bigexchange/codescan-bigid-action@v0
         with:
-          domain: <YOUR SMALLID/BIGID DOMAIN NAME> 
+          domain: sfd-demo.bigid.cloud 
           bigid_token: ${{ secrets.BIGID_TOKEN }}
           github_personnal_access_token: ${{ secrets.PA_TOKEN }}
