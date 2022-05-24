@@ -25,5 +25,5 @@ weight: 30
     - Discovers and scans data sources
 - Data Source Connectors (AWS)
     - Structured: Athena, DynamoDB, and EMR
-    - Unstructured: S3 "buckets"
-- Azure and GCP data sources currently needs to be manually imported
+    - Unstructured: S3
+- Azure and GCP data sources currently needs to be manually imported (at this time)

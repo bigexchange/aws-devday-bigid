@@ -1,3 +1,4 @@
+import json
 from aws_cdk import (
     # Duration,
     Stack,
@@ -122,3 +123,8 @@ class AccountSetupStack(Stack):
                                  resources=cr.AwsCustomResourcePolicy.ANY_RESOURCE),
                              on_create=trigger_build,
                              on_update=trigger_build)
+        with open("assets/autodiscovery_policy.json") as policy_file:
+            policy_document = iam.PolicyDocument.from_json(json.load(policy_file))
+            policy = iam.ManagedPolicy(self, "SmallIDAutodiscoveryPolicy", document=policy_document)
+            iam.User(self, "SmallIDAutomation", managed_policies=[policy], user_name="SmallIDAutomation" )
+
