@@ -1,0 +1,192 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Automatic deployment of a GITHUB CDK project via a pure cloudformation (no custom resources)
+Parameters:
+  GithubCDKProjectUrl:
+    Type: String
+    Default: https://github.com/bigexchange/aws-devday-bigid/
+  GithubCDKProjectPath:
+    Type: String
+    Default: ./account-setup
+Resources:
+  SelfDestroy:
+    Type: "AWS::CodeBuild::Project"
+    Properties:
+      Artifacts:
+        Type: "NO_ARTIFACTS"
+      Environment:
+        Type: linuxContainer
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/standard:5.0
+        EnvironmentVariables:
+          - Name: REPO_URL
+            Value: !Ref GithubCDKProjectUrl
+          - Name: REPO_PATH
+            Value: !Ref GithubCDKProjectPath
+          - Name: STACK_NAME
+            Value: !Ref AWS::StackName
+      ServiceRole: !Ref CDKDeployerRole
+      Source:
+        Type: "NO_SOURCE"
+        BuildSpec: |
+          version: 0.2
+          env:
+            shell: bash
+          phases:
+            install:
+              runtime-versions:
+                nodejs: 14.x
+                python: 3.9
+              commands:
+                - git clone ${REPO_URL} && cd $(basename ${REPO_URL})
+                - cd ${REPO_PATH}
+                - npm install -g aws-cdk
+                - cdk --version
+                - python3 -m venv .venv
+                - source .venv/bin/activate
+                - pip install -r requirements.txt
+            build:
+              commands:
+                - cdk destroy --force
+                - python3 clean-bootstrap.py
+                - aws cloudformation delete-stack --stack-name $STACK_NAME
+  CDKDeployer:
+    Type: "AWS::CodeBuild::Project"
+    Properties:
+      Artifacts:
+        Type: "NO_ARTIFACTS"
+      Environment:
+        Type: linuxContainer
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: aws/codebuild/standard:5.0
+        EnvironmentVariables:
+          - Name: REPO_URL
+            Value: !Ref GithubCDKProjectUrl
+          - Name: REPO_PATH
+            Value: !Ref GithubCDKProjectPath
+      ServiceRole: !Ref CDKDeployerRole
+      Source:
+        Type: "NO_SOURCE"
+        BuildSpec: |
+          version: 0.2
+          env:
+            shell: bash
+          phases:
+            install:
+              runtime-versions:
+                nodejs: 14.x
+                python: 3.9
+              commands:
+                - git clone ${REPO_URL} && cd $(basename ${REPO_URL})
+                - cd ${REPO_PATH}
+                - npm install -g aws-cdk
+                - cdk --version
+                - python3 -m venv .venv
+                - source .venv/bin/activate
+                - pip install -r requirements.txt
+            pre_build:
+              commands:
+                - cdk bootstrap
+            build:
+              commands:
+                - cdk deploy --require-approval never
+  CDKDeployerRole:
+    Type: AWS::IAM::Role
+    Description: Full IAM role access for CDK deployment
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action: sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service: codebuild.amazonaws.com
+      Path: /
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AdministratorAccess
+      RoleName: !Join
+        - '-'
+        - - !Ref 'AWS::StackName'
+          - CDK-deployer
+  TriggerCodebuild:
+    Type: "AWS::Lambda::Function"
+    DependsOn:
+      - TriggerCodebuildRole
+    Properties:
+      FunctionName: "BootstrapLambda"
+      Code:
+        ZipFile: |
+          import boto3
+          import os
+          import json
+          project_name = os.environ['projectName']
+          function_name = os.environ['AWS_LAMBDA_FUNCTION_NAME']
+          def self_disable():
+              try:
+                  client = boto3.client("lambda")
+                  print("Disabling lambda via concurrency for {}".format(function_name))
+                  resp = client.put_function_concurrency(
+                            FunctionName=function_name,
+                            ReservedConcurrentExecutions=0)
+                  print("answer is " + str(resp))
+              except Exception as exc:
+                  print("ERROR {}".format(exc))
+                  return
+          def trigger_codebuild():
+              try:
+                  client = boto3.client('codebuild')
+                  client.start_build(projectName=project_name)
+                  return self_disable()
+              except Exception as exc:
+                  print("ERROR {}".format(exc))
+          def handler(event, context):
+              trigger_codebuild()
+      Environment:
+        Variables:
+          projectName : !Ref CDKDeployer
+      Handler: "index.handler"
+      Runtime: "python3.9"
+      Timeout: "5"
+      Role: !GetAtt TriggerCodebuildRole.Arn
+  TriggerCodebuildEvent:
+    Type: AWS::Events::Rule
+    Properties:
+      ScheduleExpression: "rate(1 minute)"
+      Targets:
+        - Arn: !GetAtt TriggerCodebuild.Arn
+          Id: !Ref TriggerCodebuild
+  PermissionForEventsToInvokeLambda:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref "TriggerCodebuild"
+      Action: "lambda:InvokeFunction"
+      Principal: "events.amazonaws.com"
+      SourceArn: !GetAtt TriggerCodebuildEvent.Arn
+  TriggerCodebuildRole:
+    Type: "AWS::IAM::Role"
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+        - Effect: "Allow"
+          Principal:
+            Service: ["lambda.amazonaws.com"]
+          Action: "sts:AssumeRole"
+      Path: "/"
+      Policies:
+      - PolicyName: "lambda_policy"
+        PolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+          - Effect: "Allow"
+            Action:
+            - "logs:CreateLogGroup"
+            - "logs:CreateLogStream"
+            - "logs:PutLogEvents"
+            Resource: "arn:aws:logs:*:*:*"
+          - Effect: "Allow"
+            Action:
+            - "codebuild:StartBuild"
+            Resource: !GetAtt CDKDeployer.Arn
+          - Effect: "Allow"
+            Action:
+            - "lambda:putFunctionConcurrency"
+            Resource: "*"
